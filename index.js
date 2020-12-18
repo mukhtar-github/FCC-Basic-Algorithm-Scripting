@@ -428,3 +428,29 @@
 // Then we can proceed to create the six methods needed and return what is asked for.
 // For the individual setters, we can use the split to turn the fullname into an array of first and last names and concatenate the unchanged portion of the name with what was passed as a parameter.
 
+
+
+
+// *** Basic Algorithm Scripting: 
+// Find the Longest Word in a String
+// Return the length of the longest word in the provided sentence.
+
+// Your response should be a number.
+
+// function findLongestWordLength(str) {
+//   let maxLength = 0;
+//   let words = str.split(' ');
+//   for (let i = 0; i < words.length; i++) {
+//     if (words[i].length > maxLength) {
+//       maxLength = words[i].length;
+//     }
+//   }
+//   return maxLength;
+// }
+// console.log(findLongestWordLength("The quick brown fox jumped over the lazy dog")); // 6;
+
+// Code Explanation
+// Take the string and convert it into an array of words. Declare a variable to keep track of the maximum length and loop from 0 to the length of the array of words.
+
+// Then check for the longest word by comparing the current word to the previous one and storing the new longest word. At the end of the loop just return the number value of the variable maxLength.
+
