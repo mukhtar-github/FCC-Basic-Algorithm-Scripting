@@ -299,3 +299,132 @@
 //   }
 //   return true;
 // }
+
+
+// *** Intermediate Algorithm Scripting: Binary Agents.
+// Return an English translated sentence of the passed binary string.
+// The binary string will be space separated.
+
+// function binaryAgent(str) {
+//   return String.fromCharCode(
+//     ...str.split(" ").map(function(char) {
+//       return parseInt(char, 2);
+//     })
+//   );
+// }
+// console.log(binaryAgent("01000001 01110010 01100101 01101110 00100111 01110100 00100000 01100010 01101111 01101110 01100110 01101001 01110010 01100101 01110011 00100000 01100110 01110101 01101110 00100001 00111111"));
+// // Returns: Aren't bonfires fun!?
+
+// Code Explanation
+// First we use split() to be able to work on each character as an Array element
+// Then use map() to process each element from binary to decimal using pareseInt()
+// Last we can use String.fromCharCode() to convert each ASCII number into the corresponding character
+// However fromCharCode() expects a series of numbers rather than an Array! We can use ES6 Spread Operator to pass in an Array of numbers as individual numbers.
+
+
+
+
+// *** Intermediate Algorithm Scripting: Everything Be True.
+// Check if the predicate (second argument) is truthy on all elements of a collection (first argument).
+
+// In other words, you are given an array collection of objects. The predicate pre will be an object property and you need to return true if its value is truthy. Otherwise, return false.
+
+// In JavaScript, truthy values are values that translate to true when evaluated in a Boolean context.
+
+// Remember, you can access object properties through either dot notation or [] notation.
+
+// function truthCheck(collection, pre) {
+//   // Is everyone being true?
+//   return collection.every(obj => obj[pre]);
+// }
+
+// console.log(truthCheck([{"user": "Tinky-Winky", "sex": "male"}, {"user": "Dipsy", "sex": "male"}, {"user": "Laa-Laa", "sex": "female"}, {"user": "Po", "sex": "female"}], "sex"));
+// // Returns true.
+
+// Code Explanation
+// For every object in the collection array, check the truthiness of object’s property passed in pre parameter
+// Array#every method internally checks if the value returned from the callback is truthy.
+// Return true if it passes for every object. Otherwise, return false.
+
+
+
+
+// *** Intermediate Algorithm Scripting: Arguments Optional.
+// Create a function that sums two arguments together. If only one argument is provided, then return a function that expects one argument and returns the sum.
+
+// For example, addTogether(2, 3) should return 5, and addTogether(2) should return a function.
+
+// Calling this returned function with a single argument will then return the sum:
+
+// var sumTwoAnd = addTogether(2);
+
+// sumTwoAnd(3) returns 5.
+
+// If either argument isn't a valid number, return undefined.
+
+// function addTogether() {
+//   var args = Array.from(arguments);
+//   return args.some(n => typeof n !== "number")
+//     ? undefined
+//     : args.length > 1
+//     ? args.reduce((acc, n) => (acc += n), 0)
+//     : n => (typeof n === "number" ? n + args[0] : undefined);
+// }
+// console.log(addTogether(2, 3)); // Returns 5.
+
+// Code Explanation
+// First I iterate through the arguments and check for arguments that are not a number and return undefined
+// If it’s not, I then check if the arguments length is above 1, if it is, I sum the arguments using Array.prototype.reduce.
+// Else I return a function that checks if the passed in argument is a number and sum it, if not return undefined.
+
+
+
+
+// *** Intermediate Algorithm Scripting: Make a Person.
+// Fill in the object constructor with the following methods below:
+
+// getFirstName()
+// getLastName()
+// getFullName()
+// setFirstName(first)
+// setLastName(last)
+// setFullName(firstAndLast)
+// Run the tests to see the expected output for each method. The methods that take an argument must accept only one argument and it has to be a string. These methods must be the only available means of interacting with the object.
+
+
+// var Person = function(firstAndLast) {
+//   var fullName = firstAndLast;
+
+//   this.getFirstName = function() {
+//     return fullName.split(" ")[0];
+//   };
+
+//   this.getLastName = function() {
+//     return fullName.split(" ")[1];
+//   };
+
+//   this.getFullName = function() {
+//     return fullName;
+//   };
+
+//   this.setFirstName = function(name) {
+//     fullName = name + " " + fullName.split(" ")[1];
+//   };
+
+//   this.setLastName = function(name) {
+//     fullName = fullName.split(" ")[0] + " " + name;
+//   };
+
+//   this.setFullName = function(name) {
+//     fullName = name;
+//   };
+// };
+
+// var bob = new Person("Bob Ross");
+// console.log(bob.getFullName());// Returns Bob Ross.
+
+// Code Explanation
+// Create a variable that will make a copy of the full name that was passed as a parameter.
+// Then we can proceed to create the six methods needed and return what is asked for.
+// For the individual setters, we can use the split to turn the fullname into an array of first and last names and concatenate the unchanged portion of the name with what was passed as a parameter.
+
